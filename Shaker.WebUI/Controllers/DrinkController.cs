@@ -20,7 +20,7 @@ namespace Shaker.WebUI.Controllers
         {
             if (drinkFirstLetter.HasValue)
             {
-                var drinks = _drinkRepository.GetAllCoctailsByLetter(drinkFirstLetter.Value);
+                var drinks = _drinkRepository.GetAllCoctailsByLetterAsync(drinkFirstLetter.Value);
 
                 return View(drinks);
             }

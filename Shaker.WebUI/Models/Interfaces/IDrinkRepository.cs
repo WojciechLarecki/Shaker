@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Shaker.WebUI.Models.Interfaces
 {
     public interface IDrinkRepository
     {
-        IEnumerable<Drink> GetAllCoctailsByLetter(char a);
+        Task<IEnumerable<Drink>> GetAllCoctailsByLetterAsync(char a);
     }
 }

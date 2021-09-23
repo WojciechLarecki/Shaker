@@ -18,12 +18,12 @@ namespace Shaker.UnitTests.Models
         public void Index_WhenCalled_CheckIfDrinkReposiotryMethodIsCalled()
         {
             Mock<IDrinkRepository> dr = new();
-            dr.Setup(dr => dr.GetAllCoctailsByLetter('a'));
+            dr.Setup(dr => dr.GetAllCoctailsByLetterAsync('a'));
             DrinkController dc = new(dr.Object);
 
             dc.Index('a');
 
-            dr.Verify(r => r.GetAllCoctailsByLetter('a'));
+            dr.Verify(r => r.GetAllCoctailsByLetterAsync('a'));
         }
 
         [Test]
