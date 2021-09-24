@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Shaker.WebUI.Models.Interfaces;
+using Shaker.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +21,13 @@ namespace Shaker.WebUI.Models
             _httpClient = httpClient;
             _config = config;
         }
+
+        [HttpGet]
         public async Task<IEnumerable<Drink>> GetAllCoctailsByLetterAsync(char a)
         {
-            IEnumerable<Drink> drinks;
+            Rootobject drinkArray;
             var client = _httpClient.CreateClient();
-            var uri = _config.GetConnectionString("GetAllCoctailsByLetter");
+            var uri = _config.GetConnectionString("GetAllCoctailsByLetter") + a.ToString();
             var response = await client.GetAsync(uri);
 
             if (response.IsSuccessStatusCode)
@@ -33,14 +37,14 @@ namespace Shaker.WebUI.Models
                     PropertyNameCaseInsensitive = true
                 };
                 var responseString = await response.Content.ReadAsStringAsync();
-                drinks = JsonSerializer.Deserialize<IEnumerable<Drink>>(responseString, options);
+                drinkArray = JsonSerializer.Deserialize<Rootobject>(responseString, options);
             }
             else
             {
-                drinks = null;
+                drinkArray = null;
             }
 
-            return drinks;
+            return drinkArray.drinks;
         }
     }
 }

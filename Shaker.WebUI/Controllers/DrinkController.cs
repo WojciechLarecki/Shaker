@@ -17,11 +17,11 @@ namespace Shaker.WebUI.Controllers
         }
 
         [Route("Drink/{drinkFirstLetter?}")]
-        public IActionResult Index(char? drinkFirstLetter = null)
+        public async Task<IActionResult> Index(char? drinkFirstLetter = null)
         {
             if (drinkFirstLetter.HasValue)
             {
-                var drinks = _drinkRepository.GetAllCoctailsByLetterAsync(drinkFirstLetter.Value);
+                var drinks = await _drinkRepository.GetAllCoctailsByLetterAsync(drinkFirstLetter.Value);
 
                 return View(drinks);
             }
