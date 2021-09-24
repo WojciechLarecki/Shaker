@@ -16,6 +16,7 @@ namespace Shaker.WebUI.Controllers
             _drinkRepository = dr;
         }
 
+        [Route("Drink/{drinkFirstLetter?}")]
         public IActionResult Index(char? drinkFirstLetter = null)
         {
             if (drinkFirstLetter.HasValue)
