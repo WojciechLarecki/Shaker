@@ -25,7 +25,7 @@ namespace Shaker.WebUI.Models
         [HttpGet]
         public async Task<IEnumerable<Drink>> GetAllCoctailsByLetterAsync(char a)
         {
-            Rootobject drinkArray;
+            DrinkArray drinkArray;
             var client = _httpClient.CreateClient();
             var uri = _config.GetConnectionString("GetAllCoctailsByLetter") + a.ToString();
             var response = await client.GetAsync(uri);
@@ -37,7 +37,7 @@ namespace Shaker.WebUI.Models
                     PropertyNameCaseInsensitive = true
                 };
                 var responseString = await response.Content.ReadAsStringAsync();
-                drinkArray = JsonSerializer.Deserialize<Rootobject>(responseString, options);
+                drinkArray = JsonSerializer.Deserialize<DrinkArray>(responseString, options);
             }
             else
             {
