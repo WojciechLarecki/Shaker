@@ -1,8 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<header>
+    <h1>Shaker</h1>
+    <p>Place where whatever drink you want.</p>
+</header>
+<main>
+    <h2>Make your choice</h2>
+    <div>
+        @Html.ActionLink("Choose by the letter", "Index", "Drink")
+    </div>
+</main>
