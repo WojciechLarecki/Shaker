@@ -71,3 +71,14 @@ a {
     height: 7rem;
     margin: 10px;
 }
+
+.letterButton:hover{
+    color: black;
+    border-color: black;
+    background-color: white;
+}
+
+.letter {
+    color: inherit;
+}
+

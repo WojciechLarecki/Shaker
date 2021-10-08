@@ -1,6 +1,7 @@
 ﻿@{ 
     ViewData["Title"] = "ChooseByLetter";
 }
+@model IEnumerable<Shaker.WebUI.Models.Drink>
 <header>
     <h1>Choose by letter</h1>
 </header>
@@ -9,7 +10,17 @@
         @{char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray(); }
         @foreach (var letter in alpha)
         {
-            <div class="letterButton">@letter</div>
+            <div class="letterButton">@Html.ActionLink(letter.ToString(), "Index", "Drink", new { @drinkFirstLetter = letter }, new { @class = "letter" })</div>
         }
     </div>
+    @if (Model != null)
+    {
+        <h2>Make your drink</h2>
+        <ul>
+            @foreach (var drink in Model)
+            {
+                <li>@Html.ActionLink(drink.StrDrink, "StringDetails", "DrinkContoller", drink, new { @class = "listedDrink"})</li>
+            }
+        </ul>
+    }
 </body>
