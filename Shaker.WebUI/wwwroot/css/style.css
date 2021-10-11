@@ -79,6 +79,30 @@ a {
 }
 
 .letter {
+    text-align: center;
     color: inherit;
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    border-radius: 10px;
+    color: white;
+    padding-left: 1rem;
+}
+
+li:hover {
+    color: black;
+    background-color: white;
+}
+
+.listedDrink {
+    color: inherit;
+    display: flex;
 }
 

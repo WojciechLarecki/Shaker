@@ -19,7 +19,7 @@
         <ul>
             @foreach (var drink in Model)
             {
-                <li>@Html.ActionLink(drink.StrDrink, "StringDetails", "DrinkContoller", drink, new { @class = "listedDrink"})</li>
+                <li>@Html.ActionLink(drink.StrDrink, "DrinkDetails", "DrinkContoller", drink, new { @class = "listedDrink"})</li>
             }
         </ul>
     }
