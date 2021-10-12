@@ -46,5 +46,29 @@ namespace Shaker.WebUI.Models
 
             return drinkArray.drinks;
         }
+
+        public async Task<Drink> GetCoctailById(int drinkId)
+        {
+            DrinkArray drinkArray;
+            var client = _httpClient.CreateClient();
+            var uri = _config.GetConnectionString("GetCoctailById") + drinkId;
+            var response = await client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var options = new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                var responseString = await response.Content.ReadAsStringAsync();
+                drinkArray = JsonSerializer.Deserialize<DrinkArray>(responseString, options);
+            }
+            else
+            {
+                drinkArray = null;
+            }
+
+            return drinkArray.drinks.First();
+        }
     }
 }
