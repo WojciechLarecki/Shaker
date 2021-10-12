@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shaker.WebUI.Models;
 using Shaker.WebUI.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,12 @@ namespace Shaker.WebUI.Controllers
                 return View(drinks);
             }
             return View();
+        }
+
+        [Route("Drink/Details/{drink}")]
+        public IActionResult DrinkDetails(Drink drink)
+        {
+            return View(drink);
         }
     }
 }
