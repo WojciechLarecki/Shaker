@@ -29,6 +29,7 @@ namespace Shaker.WebUI.Controllers
             return View();
         }
 
+        [Route("Drink/Details/{drink}")]
         public IActionResult DrinkDetails(Drink drink)
         {
             return View(drink);
