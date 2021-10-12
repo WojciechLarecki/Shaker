@@ -33,8 +33,9 @@ namespace Shaker.WebUI.Controllers
         public async Task<IActionResult> DrinkDetails(int drinkId)
         {
             var drink = await _drinkRepository.GetCoctailById(drinkId);
+            var drinkViewModel = new DrinkDetailsViewModel(drink);
 
-            return View(drink);
+            return View(drinkViewModel);
         }
     }
 }
