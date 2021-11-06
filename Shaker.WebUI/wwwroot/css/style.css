@@ -108,3 +108,6 @@ ul {
     display: flex;
 }
 
+.listedIngridient {
+    color: white;
+}

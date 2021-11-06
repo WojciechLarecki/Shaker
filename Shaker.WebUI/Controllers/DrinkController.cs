@@ -29,10 +29,13 @@ namespace Shaker.WebUI.Controllers
             return View();
         }
 
-        [Route("Drink/Details/{drink}")]
-        public IActionResult DrinkDetails(Drink drink)
+        [Route("Drink/Details/{drinkId}")]
+        public async Task<IActionResult> DrinkDetails(int drinkId)
         {
-            return View(drink);
+            var drink = await _drinkRepository.GetCoctailById(drinkId);
+            var drinkViewModel = new DrinkDetailsViewModel(drink);
+
+            return View(drinkViewModel);
         }
     }
 }
