@@ -3,11 +3,11 @@
 }
 <header>
     <h1>Shaker</h1>
-    <p>Place where is whatever drink you want</p>
+    <p class="text">Place where is whatever drink you want</p>
 </header>
 <main>
     <h2>Make your choice</h2>
-    <div class="ChoosebyLetter">
-        @Html.ActionLink("Choose by the letter", "Index", "Drink")
+    <div class="ChooseOption">
+        @Html.ActionLink("Choose by the letter", "Index", "Drink", null, new { @class = "hyperText" })
     </div>
 </main>
