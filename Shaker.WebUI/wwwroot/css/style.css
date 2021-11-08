@@ -111,3 +111,29 @@ ul {
 .listedIngridient {
     color: white;
 }
+
+h3 {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+}
+
+#figureAndComponents {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+}
+
+figcaption {
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+    height: 30rem;
+    width: 30rem;
+}
+
+#instruction {
+    text-align: center;
+}

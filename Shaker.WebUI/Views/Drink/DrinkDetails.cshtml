@@ -9,21 +9,21 @@
     <h2>Drink Details</h2>
     <section class="initialInformation">
         <h3>Ingridients</h3>
-        <div>
-            <ul>
+        <div id="figureAndComponents">
+            <ul class="text">
                 @foreach (var component in Model.DrinkComponents)
                 {
                     <li class="listedIngridient">@(component.Key + ": " + component.Value)</li>
                 }
             </ul>
+            <figure class="drinkFigure">
+                <img src=@Model.Drink.StrDrinkThumb alt="drink image" width="300" height="300" />
+                <figcaption class="text">@Model.Drink.StrDrink</figcaption>
+            </figure>
         </div>
-        <figure class="drinkFigure">
-            <img src=@Model.Drink.StrDrinkThumb alt="drink image" width="300" height="300" />
-            <figcaption>@Model.Drink.StrDrink</figcaption>
-        </figure>
     </section>
     <section class="details">
-        <h3>Instrudtion</h3>
-        <p>@Model.Drink.StrInstructions</p>
+        <h3>Instruction</h3>
+        <p class="text" id="instruction">@Model.Drink.StrInstructions</p>
     </section>
 </body>
