@@ -10,7 +10,7 @@
     <section class="initialInformation">
         <h3>Ingridients</h3>
         <div id="figureAndComponents">
-            <ul>
+            <ul class="text">
                 @foreach (var component in Model.DrinkComponents)
                 {
                     <li class="listedIngridient">@(component.Key + ": " + component.Value)</li>
@@ -23,7 +23,7 @@
         </div>
     </section>
     <section class="details">
-        <h3>Instrudtion</h3>
-        <p class="text">@Model.Drink.StrInstructions</p>
+        <h3>Instruction</h3>
+        <p class="text" id="instruction">@Model.Drink.StrInstructions</p>
     </section>
 </body>
