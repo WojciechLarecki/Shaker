@@ -7,5 +7,6 @@ namespace Shaker.WebUI.Models.Interfaces
     {
         Task<IEnumerable<Drink>> GetAllCoctailsByLetterAsync(char a);
         Task<Drink> GetCoctailById(int drinkId);
+        Task<Drink> GetRandomCoctailAsync();
     }
 }

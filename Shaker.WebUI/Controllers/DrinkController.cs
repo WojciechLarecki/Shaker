@@ -37,5 +37,12 @@ namespace Shaker.WebUI.Controllers
 
             return View(drinkViewModel);
         }
+
+        public async Task<IActionResult> GetRandomDrink()
+        {
+            var coctail = await _drinkRepository.GetRandomCoctailAsync();
+
+            return RedirectToAction("DrinkDetails", new { drinkId = coctail.IdDrink });
+        }
     }
 }

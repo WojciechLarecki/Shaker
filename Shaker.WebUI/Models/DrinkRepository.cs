@@ -26,23 +26,10 @@ namespace Shaker.WebUI.Models
         public async Task<IEnumerable<Drink>> GetAllCoctailsByLetterAsync(char a)
         {
             DrinkArray drinkArray;
-            var client = _httpClient.CreateClient();
             var uri = _config.GetConnectionString("GetAllCoctailsByLetter") + a.ToString();
+            var client = _httpClient.CreateClient();
             var response = await client.GetAsync(uri);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var options = new JsonSerializerOptions()
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-                var responseString = await response.Content.ReadAsStringAsync();
-                drinkArray = JsonSerializer.Deserialize<DrinkArray>(responseString, options);
-            }
-            else
-            {
-                drinkArray = null;
-            }
+            drinkArray = await ValidateResonse(response);
 
             return drinkArray.drinks;
         }
@@ -53,6 +40,25 @@ namespace Shaker.WebUI.Models
             var client = _httpClient.CreateClient();
             var uri = _config.GetConnectionString("GetCoctailById") + drinkId;
             var response = await client.GetAsync(uri);
+            drinkArray = await ValidateResonse(response);
+
+            return drinkArray.drinks.First();
+        }
+
+        public async Task<Drink> GetRandomCoctailAsync()
+        {
+            DrinkArray drinkArray;
+            var client = _httpClient.CreateClient();
+            var uri = _config.GetConnectionString("GetRandomCoctail");
+            var response = await client.GetAsync(uri);
+            drinkArray = await ValidateResonse(response);
+
+            return drinkArray.drinks.First();
+        }
+
+        private static async Task<DrinkArray> ValidateResonse(HttpResponseMessage response)
+        {
+            DrinkArray drinkArray;
 
             if (response.IsSuccessStatusCode)
             {
@@ -68,7 +74,7 @@ namespace Shaker.WebUI.Models
                 drinkArray = null;
             }
 
-            return drinkArray.drinks.First();
+            return drinkArray;
         }
     }
 }
