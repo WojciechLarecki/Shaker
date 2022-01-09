@@ -38,6 +38,7 @@ namespace Shaker.WebUI.Controllers
             return View(drinkViewModel);
         }
 
+        [Route("Drink/GetRandomDrink")]
         public async Task<IActionResult> GetRandomDrink()
         {
             var coctail = await _drinkRepository.GetRandomCoctailAsync();
