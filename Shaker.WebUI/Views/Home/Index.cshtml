@@ -8,6 +8,9 @@
 <main>
     <h2>Make your choice</h2>
     <div class="ChooseOption" id="chooseByLetter">
-        @Html.ActionLink("Choose by the letter", "Index", "Drink", null, new { @class = "hyperText", @id="chooseByLetterText" })
+        @Html.ActionLink("Choose by the letter", "Index", "Drink", null, new { @class = "hyperText", @id = "chooseByLetterText" })
+    </div>
+    <div class="ChooseOption" id="chooseRandom">
+        @Html.ActionLink("Choose random", "GetRandomDrink", "Drink", null, new { @class = "hyperText", @id = "chooseByLetterText" })
     </div>
 </main>
